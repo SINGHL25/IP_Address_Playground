@@ -5,6 +5,8 @@ import os
 import json
 import ipaddress
 import random
+import pandas as pd
+import plotly.express as px
 from datetime import datetime
 
 # Add parent directory to path for imports
@@ -33,7 +35,10 @@ def main():
         st.session_state.ip_ecosystem = {
             'networks': [],
             'devices': [],
-            'subnets': []
+            'subnets': [],
+            'dhcp_pool': {},
+            'dns_records': {},
+            'hosts': []
         }
     
     # Main sections
@@ -146,7 +151,6 @@ def main():
         st.markdown("## 📊 IP Address Analytics")
         
         if st.session_state.ip_ecosystem['networks']:
-            
             # IP Address Distribution Analysis
             st.subheader("🎯 IP Address Distribution")
             
@@ -428,72 +432,77 @@ Internet
         st.markdown("## 📈 Network Monitoring Dashboard")
         
         if st.session_state.ip_ecosystem['networks']:
-            
-            # Monitoring metrics (simulated)
+            # Simulated metrics for demonstration
+            metrics = {
+                "avg_util": random.randint(40, 95),
+                "packet_loss": random.randint(0, 8),
+                "latency": random.randint(30, 130),
+            }
+
             st.subheader("📊 Real-time Network Status")
-            
             monitor_col1, monitor_col2, monitor_col3, monitor_col4 = st.columns(4)
             
             with monitor_col1:
                 st.metric("Total Networks", len(st.session_state.ip_ecosystem['networks']))
             
             with monitor_col2:
-        st.metric("Avg Utilization", f"{metrics['avg_util']}%", f"{random.randint(-5, 5)}%")
+                st.metric("Avg Utilization", f"{metrics['avg_util']}%", f"{random.randint(-5, 5)}%")
+            
+            with monitor_col3:
+                st.metric("Packet Loss", f"{metrics['packet_loss']}%", f"{random.choice([-1, 0, 1])}%")
+            
+            with monitor_col4:
+                st.metric("Latency", f"{metrics['latency']} ms", f"{random.choice([-10, -5, 0, 5])} ms")
+            
+            # Visualization
+            st.subheader("📉 Network Throughput Simulation")
+            df = pd.DataFrame({
+                "Time": pd.date_range(start="2025-09-10", periods=10, freq="T"),
+                "Throughput": [random.randint(100, 1000) for _ in range(10)]
+            })
+            fig = px.line(df, x="Time", y="Throughput", markers=True,
+                        title="Network Throughput (Mbps)")
+            st.plotly_chart(fig, use_container_width=True)
 
-    with monitor_col3:
-        st.metric("Packet Loss", f"{metrics['packet_loss']}%", f"{random.choice([-1, 0, 1])}%")
+            # DHCP Table
+            st.subheader("📦 DHCP Pool Status")
+            dhcp_df = pd.DataFrame(
+                list(st.session_state.ip_ecosystem.get("dhcp_pool", {}).items()),
+                columns=["IP Address", "Status"],
+            )
+            st.dataframe(dhcp_df, use_container_width=True)
 
-    with monitor_col4:
-        st.metric("Latency", f"{metrics['latency']} ms", f"{random.choice([-10, -5, 0, 5])} ms")
+            # DNS Records
+            st.subheader("🌍 DNS Records")
+            dns_df = pd.DataFrame(
+                list(st.session_state.ip_ecosystem.get("dns_records", {}).items()),
+                columns=["Domain", "Resolved IP"],
+            )
+            st.table(dns_df)
 
-    # Visualization
-    st.subheader("📉 Network Throughput Simulation")
+            # Hosts Table
+            st.subheader("🖥️ Active Hosts")
+            hosts_df = pd.DataFrame(st.session_state.ip_ecosystem.get("hosts", []), columns=["Host IP"])
+            st.dataframe(hosts_df, use_container_width=True)
 
-    df = pd.DataFrame({
-        "Time": pd.date_range(start="2025-09-10", periods=10, freq="T"),
-        "Throughput": [random.randint(100, 1000) for _ in range(10)]
-    })
+            # Alerts Simulation
+            st.subheader("🚨 Alerts & Notifications")
+            alerts = []
+            if metrics["packet_loss"] > 3:
+                alerts.append("⚠️ High Packet Loss detected")
+            if metrics["latency"] > 100:
+                alerts.append("⚠️ High Latency observed")
+            if metrics["avg_util"] > 70:
+                alerts.append("⚠️ Network Utilization above 70%")
 
-    fig = px.line(df, x="Time", y="Throughput", markers=True,
-                  title="Network Throughput (Mbps)")
-    st.plotly_chart(fig, use_container_width=True)
+            if alerts:
+                for a in alerts:
+                    st.error(a)
+            else:
+                st.success("✅ All networks are healthy!")
 
-    # DHCP Table
-    st.subheader("📦 DHCP Pool Status")
-    dhcp_df = pd.DataFrame(
-        list(st.session_state.ip_ecosystem["dhcp_pool"].items()),
-        columns=["IP Address", "Status"],
-    )
-    st.dataframe(dhcp_df, use_container_width=True)
+        else:
+            st.info("No network data available. Please configure your IP Ecosystem first.")
 
-    # DNS Records
-    st.subheader("🌍 DNS Records")
-    dns_df = pd.DataFrame(
-        list(st.session_state.ip_ecosystem["dns_records"].items()),
-        columns=["Domain", "Resolved IP"],
-    )
-    st.table(dns_df)
-
-    # Hosts Table
-    st.subheader("🖥️ Active Hosts")
-    hosts_df = pd.DataFrame(st.session_state.ip_ecosystem["hosts"], columns=["Host IP"])
-    st.dataframe(hosts_df, use_container_width=True)
-
-    # Alerts Simulation
-    st.subheader("🚨 Alerts & Notifications")
-    alerts = []
-    if metrics["packet_loss"] > 3:
-        alerts.append("⚠️ High Packet Loss detected")
-    if metrics["latency"] > 100:
-        alerts.append("⚠️ High Latency observed")
-    if metrics["avg_util"] > 70:
-        alerts.append("⚠️ Network Utilization above 70%")
-
-    if alerts:
-        for a in alerts:
-            st.error(a)
-    else:
-        st.success("✅ All networks are healthy!")
-
-else:
-    st.info("No network data available. Please configure your IP Ecosystem first.")
+if __name__ == "__main__":
+    main()
