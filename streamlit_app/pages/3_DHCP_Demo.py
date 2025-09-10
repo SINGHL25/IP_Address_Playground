@@ -2,18 +2,17 @@
 import streamlit as st
 import sys
 import os
-import ipaddress
-import random
-import time
-from datetime import datetime, timedelta
 
-# Add src and utils to sys.path for imports
+# Dynamically add src and utils directories for importing custom modules
 PAGES_DIR = os.path.dirname(__file__)
 STREAMLIT_APP_DIR = os.path.dirname(PAGES_DIR)
 SRC_DIR = os.path.abspath(os.path.join(STREAMLIT_APP_DIR, "..", "src"))
 UTILS_DIR = os.path.abspath(os.path.join(STREAMLIT_APP_DIR, "..", "utils"))
-sys.path.append(SRC_DIR)
-sys.path.append(UTILS_DIR)
+
+if SRC_DIR not in sys.path:
+    sys.path.append(SRC_DIR)
+if UTILS_DIR not in sys.path:
+    sys.path.append(UTILS_DIR)
 
 from dhcp_allocator import DHCPAllocator
 from helpers import validate_ip_address, format_mac_address
