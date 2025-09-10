@@ -1,19 +1,14 @@
 
-import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "src")))
-
-from ip_class_identifier import IPClassIdentifier
-
-
 import streamlit as st
 import sys
 import os
 
-# Add parent directory to path for imports
+# Set up import paths for helpers and ip_class_identifier
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from utils.helpers import validate_ip_address, get_ip_class, get_ip_info, is_private_ip, is_loopback_ip
 from ip_class_identifier import IPClassIdentifier
+from utils.helpers import validate_ip_address, get_ip_class, get_ip_info, is_private_ip, is_loopback_ip
 
 def main():
     st.set_page_config(
