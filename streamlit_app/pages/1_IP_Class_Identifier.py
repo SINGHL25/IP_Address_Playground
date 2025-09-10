@@ -3,12 +3,11 @@ import streamlit as st
 import sys
 import os
 
-# Set up import paths for helpers and ip_class_identifier
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add parent directory to path for imports (so utils can be imported)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from ip_class_identifier import IPClassIdentifier
 from utils.helpers import validate_ip_address, get_ip_class, get_ip_info, is_private_ip, is_loopback_ip
+from ip_class_identifier import IPClassIdentifier
 
 def main():
     st.set_page_config(
