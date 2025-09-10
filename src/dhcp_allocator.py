@@ -552,3 +552,4 @@ class DHCPAllocator:
             simulation['error'] = str(e)
         
         return simulation
+        
