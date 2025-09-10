@@ -3,16 +3,11 @@ import streamlit as st
 import sys
 import os
 
-# Add 'src' and 'utils' directories to the Python path for imports
-PAGES_DIR = os.path.dirname(__file__)
-STREAMLIT_APP_DIR = os.path.dirname(PAGES_DIR)
-SRC_DIR = os.path.abspath(os.path.join(STREAMLIT_APP_DIR, "..", "src"))
-UTILS_DIR = os.path.abspath(os.path.join(STREAMLIT_APP_DIR, "..", "utils"))
-sys.path.append(SRC_DIR)
-sys.path.append(UTILS_DIR)
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from utils.helpers import validate_ip_address, get_ip_class, get_ip_info, is_private_ip, is_loopback_ip
 from ip_class_identifier import IPClassIdentifier
-from helpers import validate_ip_address, get_ip_class, get_ip_info, is_private_ip, is_loopback_ip
 
 def main():
     st.set_page_config(
