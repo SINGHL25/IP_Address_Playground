@@ -1,1 +1,743 @@
-
+{
+  "subnet_exercises": {
+    "metadata": {
+      "title": "Comprehensive Subnet Practice Exercises",
+      "description": "A collection of subnetting exercises ranging from basic to advanced levels",
+      "version": "1.0",
+      "created_by": "Network Training Team",
+      "difficulty_levels": ["Beginner", "Intermediate", "Advanced", "Expert"],
+      "total_exercises": 50
+    },
+    "basic_exercises": [
+      {
+        "id": "basic_001",
+        "title": "Basic Class C Subnetting",
+        "difficulty": "Beginner",
+        "description": "Given a Class C network, determine subnet information",
+        "network": "192.168.1.0/24",
+        "questions": [
+          {
+            "question": "What is the subnet mask in dotted decimal notation?",
+            "answer": "255.255.255.0",
+            "explanation": "A /24 CIDR corresponds to 255.255.255.0 subnet mask"
+          },
+          {
+            "question": "How many host addresses are available?",
+            "answer": "254",
+            "explanation": "2^8 - 2 = 256 - 2 = 254 (excluding network and broadcast)"
+          },
+          {
+            "question": "What is the broadcast address?",
+            "answer": "192.168.1.255",
+            "explanation": "The broadcast address is the last address in the subnet"
+          },
+          {
+            "question": "What is the first usable host address?",
+            "answer": "192.168.1.1",
+            "explanation": "The first usable host address is network address + 1"
+          },
+          {
+            "question": "What is the last usable host address?",
+            "answer": "192.168.1.254",
+            "explanation": "The last usable host address is broadcast address - 1"
+          }
+        ],
+        "hints": [
+          "Remember that network and broadcast addresses cannot be assigned to hosts",
+          "CIDR /24 means 24 bits for network, 8 bits for hosts"
+        ]
+      },
+      {
+        "id": "basic_002", 
+        "title": "Class A Network Analysis",
+        "difficulty": "Beginner",
+        "description": "Analyze a Class A private network",
+        "network": "10.0.0.0/8",
+        "questions": [
+          {
+            "question": "What class is this IP address?",
+            "answer": "Class A",
+            "explanation": "First octet 10 is in the range 1-126 (Class A)"
+          },
+          {
+            "question": "Is this a private or public IP range?",
+            "answer": "Private",
+            "explanation": "10.0.0.0/8 is one of the three private IP ranges (RFC 1918)"
+          },
+          {
+            "question": "How many networks can be created with default subnetting?",
+            "answer": "1",
+            "explanation": "With default Class A mask (/8), this represents one large network"
+          },
+          {
+            "question": "How many host addresses are theoretically available?",
+            "answer": "16777214",
+            "explanation": "2^24 - 2 = 16,777,216 - 2 = 16,777,214"
+          }
+        ]
+      },
+      {
+        "id": "basic_003",
+        "title": "Class B Network Analysis",
+        "difficulty": "Beginner", 
+        "description": "Examine a Class B private network",
+        "network": "172.16.0.0/16",
+        "questions": [
+          {
+            "question": "What is the default subnet mask?",
+            "answer": "255.255.0.0",
+            "explanation": "Class B default mask is /16 or 255.255.0.0"
+          },
+          {
+            "question": "How many host bits are available?",
+            "answer": "16",
+            "explanation": "32 total bits - 16 network bits = 16 host bits"
+          },
+          {
+            "question": "What is the network address?",
+            "answer": "172.16.0.0",
+            "explanation": "Network address is given in the CIDR notation"
+          },
+          {
+            "question": "What is the broadcast address?",
+            "answer": "172.16.255.255",
+            "explanation": "All host bits set to 1 gives the broadcast address"
+          }
+        ]
+      }
+    ],
+    "intermediate_exercises": [
+      {
+        "id": "inter_001",
+        "title": "Subnetting a /24 Network",
+        "difficulty": "Intermediate",
+        "description": "Divide 192.168.1.0/24 into 4 equal subnets",
+        "network": "192.168.1.0/24",
+        "requirement": "Create 4 subnets",
+        "questions": [
+          {
+            "question": "How many additional subnet bits are needed?",
+            "answer": "2",
+            "explanation": "2^2 = 4 subnets, so we need 2 additional bits"
+          },
+          {
+            "question": "What is the new subnet mask?",
+            "answer": "255.255.255.192 or /26",
+            "explanation": "24 + 2 = 26 bits, which equals 255.255.255.192"
+          },
+          {
+            "question": "List the 4 subnet addresses",
+            "answer": ["192.168.1.0/26", "192.168.1.64/26", "192.168.1.128/26", "192.168.1.192/26"],
+            "explanation": "Each subnet has 64 addresses (2^6), so they start at 0, 64, 128, 192"
+          },
+          {
+            "question": "How many host addresses per subnet?",
+            "answer": "62",
+            "explanation": "2^6 - 2 = 64 - 2 = 62 usable host addresses"
+          }
+        ],
+        "subnet_details": [
+          {
+            "subnet": "192.168.1.0/26",
+            "range": "192.168.1.0 - 192.168.1.63",
+            "first_host": "192.168.1.1",
+            "last_host": "192.168.1.62",
+            "broadcast": "192.168.1.63"
+          },
+          {
+            "subnet": "192.168.1.64/26", 
+            "range": "192.168.1.64 - 192.168.1.127",
+            "first_host": "192.168.1.65",
+            "last_host": "192.168.1.126",
+            "broadcast": "192.168.1.127"
+          },
+          {
+            "subnet": "192.168.1.128/26",
+            "range": "192.168.1.128 - 192.168.1.191", 
+            "first_host": "192.168.1.129",
+            "last_host": "192.168.1.190",
+            "broadcast": "192.168.1.191"
+          },
+          {
+            "subnet": "192.168.1.192/26",
+            "range": "192.168.1.192 - 192.168.1.255",
+            "first_host": "192.168.1.193", 
+            "last_host": "192.168.1.254",
+            "broadcast": "192.168.1.255"
+          }
+        ]
+      },
+      {
+        "id": "inter_002",
+        "title": "VLSM Design Challenge",
+        "difficulty": "Intermediate",
+        "description": "Design subnets with Variable Length Subnet Masking",
+        "network": "172.16.0.0/20",
+        "requirements": [
+          {"department": "Sales", "hosts_needed": 100},
+          {"department": "Engineering", "hosts_needed": 50},
+          {"department": "Marketing", "hosts_needed": 25},
+          {"department": "HR", "hosts_needed": 10},
+          {"department": "Point-to-Point Links", "hosts_needed": 2}
+        ],
+        "solution": [
+          {
+            "department": "Sales",
+            "subnet": "172.16.0.0/25",
+            "hosts_available": 126,
+            "efficiency": "79.4%"
+          },
+          {
+            "department": "Engineering", 
+            "subnet": "172.16.0.128/26",
+            "hosts_available": 62,
+            "efficiency": "80.6%"
+          },
+          {
+            "department": "Marketing",
+            "subnet": "172.16.0.192/27",
+            "hosts_available": 30,
+            "efficiency": "83.3%"
+          },
+          {
+            "department": "HR",
+            "subnet": "172.16.0.224/28",
+            "hosts_available": 14,
+            "efficiency": "71.4%"
+          },
+          {
+            "department": "Point-to-Point Links",
+            "subnet": "172.16.0.240/30",
+            "hosts_available": 2,
+            "efficiency": "100%"
+          }
+        ],
+        "questions": [
+          {
+            "question": "Why start with the largest subnet requirement?",
+            "answer": "To avoid fragmentation and make optimal use of address space",
+            "explanation": "VLSM works best when you allocate larger subnets first"
+          },
+          {
+            "question": "What is the overall address utilization efficiency?",
+            "answer": "Approximately 80%",
+            "explanation": "187 hosts needed out of 234 available = 79.9% efficiency"
+          }
+        ]
+      },
+      {
+        "id": "inter_003",
+        "title": "Route Summarization", 
+        "difficulty": "Intermediate",
+        "description": "Summarize multiple networks into a single route",
+        "networks": [
+          "192.168.0.0/24",
+          "192.168.1.0/24", 
+          "192.168.2.0/24",
+          "192.168.3.0/24"
+        ],
+        "questions": [
+          {
+            "question": "What is the summary route that covers all networks?",
+            "answer": "192.168.0.0/22",
+            "explanation": "192.168.0.0/22 covers 192.168.0.0 through 192.168.3.255"
+          },
+          {
+            "question": "How many routing table entries are reduced?", 
+            "answer": "3",
+            "explanation": "4 routes become 1 route, saving 3 entries"
+          },
+          {
+            "question": "What is the address space efficiency?",
+            "answer": "100%",
+            "explanation": "All addresses in the summary are actually used"
+          }
+        ]
+      }
+    ],
+    "advanced_exercises": [
+      {
+        "id": "adv_001",
+        "title": "Complex VLSM Scenario",
+        "difficulty": "Advanced",
+        "description": "Design a complete network for a multi-site organization",
+        "base_network": "10.0.0.0/16",
+        "sites": [
+          {
+            "name": "Headquarters",
+            "location": "New York", 
+            "departments": [
+              {"name": "IT", "hosts": 200},
+              {"name": "Sales", "hosts": 150},
+              {"name": "Engineering", "hosts": 100},
+              {"name": "Finance", "hosts": 50},
+              {"name": "HR", "hosts": 25}
+            ]
+          },
+          {
+            "name": "Branch Office 1",
+            "location": "Los Angeles",
+            "departments": [
+              {"name": "Sales", "hosts": 75},
+              {"name": "Support", "hosts": 25}
+            ]
+          },
+          {
+            "name": "Branch Office 2", 
+            "location": "Chicago",
+            "departments": [
+              {"name": "Sales", "hosts": 50},
+              {"name": "Support", "hosts": 15}
+            ]
+          }
+        ],
+        "wan_links": [
+          {"from": "HQ", "to": "Branch 1", "hosts": 2},
+          {"from": "HQ", "to": "Branch 2", "hosts": 2},
+          {"from": "Branch 1", "to": "Branch 2", "hosts": 2}
+        ],
+        "solution_approach": {
+          "step_1": "List all requirements in descending order by size",
+          "step_2": "Allocate subnets starting with largest first", 
+          "step_3": "Use appropriate CIDR for each requirement",
+          "step_4": "Verify no overlapping subnets",
+          "step_5": "Document all allocations"
+        },
+        "sample_solution": [
+          {"requirement": "HQ IT (200 hosts)", "subnet": "10.0.0.0/24", "available": 254},
+          {"requirement": "HQ Sales (150 hosts)", "subnet": "10.0.1.0/24", "available": 254},
+          {"requirement": "HQ Engineering (100 hosts)", "subnet": "10.0.2.0/25", "available": 126},
+          {"requirement": "Branch 1 Sales (75 hosts)", "subnet": "10.0.2.128/25", "available": 126},
+          {"requirement": "HQ Finance (50 hosts)", "subnet": "10.0.3.0/26", "available": 62},
+          {"requirement": "Branch 2 Sales (50 hosts)", "subnet": "10.0.3.64/26", "available": 62}
+        ]
+      },
+      {
+        "id": "adv_002",
+        "title": "IPv6 Subnetting",
+        "difficulty": "Advanced", 
+        "description": "Work with IPv6 subnet allocation",
+        "network": "2001:db8::/32",
+        "requirements": [
+          {"site": "Main Campus", "subnets_needed": 16},
+          {"site": "Branch A", "subnets_needed": 4},
+          {"site": "Branch B", "subnets_needed": 2}
+        ],
+        "questions": [
+          {
+            "question": "How many bits are needed for 16 subnets?",
+            "answer": "4 bits",
+            "explanation": "2^4 = 16 subnets"
+          },
+          {
+            "question": "What would be the subnet allocation for Main Campus?",
+            "answer": "2001:db8:0000::/36 to 2001:db8:000f::/36",
+            "explanation": "16 /36 subnets starting from 0000 to 000f"
+          },
+          {
+            "question": "How many IPv6 addresses are in each /64 subnet?",
+            "answer": "18,446,744,073,709,551,616",
+            "explanation": "2^64 addresses per subnet"
+          }
+        ]
+      },
+      {
+        "id": "adv_003",
+        "title": "Network Troubleshooting Scenario",
+        "difficulty": "Advanced",
+        "description": "Diagnose subnet configuration issues",
+        "scenario": {
+          "problem": "Devices in different departments can't communicate",
+          "network_config": {
+            "network": "192.168.0.0/22",
+            "department_a": {"subnet": "192.168.0.0/24", "gateway": "192.168.0.1"},
+            "department_b": {"subnet": "192.168.1.0/24", "gateway": "192.168.1.1"},
+            "department_c": {"subnet": "192.168.2.0/25", "gateway": "192.168.2.1"}
+          },
+          "symptoms": [
+            "Department A can access internet but not Department B",
+            "Department C cannot reach any other department",
+            "Some devices have 169.254.x.x addresses"
+          ]
+        },
+        "analysis_questions": [
+          {
+            "question": "What do the 169.254.x.x addresses indicate?",
+            "answer": "DHCP failure - APIPA addresses",
+            "explanation": "169.254.0.0/16 is the APIPA range used when DHCP fails"
+          },
+          {
+            "question": "Why might departments be unable to communicate?",
+            "answer": "Missing inter-VLAN routing or firewall rules",
+            "explanation": "Different subnets require Layer 3 routing to communicate"
+          },
+          {
+            "question": "Is the subnet design efficient?",
+            "answer": "Partially - Department C uses /25 which is more efficient",
+            "explanation": "Departments A and B use /24 (254 hosts) which may be oversized"
+          }
+        ],
+        "solutions": [
+          "Configure inter-VLAN routing on the gateway",
+          "Verify DHCP servers are operational",
+          "Check firewall rules between VLANs",
+          "Ensure proper VLAN configuration on switches"
+        ]
+      }
+    ],
+    "expert_exercises": [
+      {
+        "id": "exp_001",
+        "title": "Enterprise Network Design",
+        "difficulty": "Expert",
+        "description": "Complete network design for a large enterprise",
+        "requirements": {
+          "organization": "Global Technology Company",
+          "sites": 12,
+          "total_employees": 5000,
+          "growth_projection": "30% over 3 years",
+          "special_requirements": [
+            "Voice over IP network",
+            "Guest wireless network", 
+            "IoT device network",
+            "DMZ for servers",
+            "Management network",
+            "High availability requirements"
+          ]
+        },
+        "base_allocation": "10.0.0.0/8",
+        "design_constraints": [
+          "Must support future growth",
+          "Minimize routing table entries",
+          "Provide network segmentation for security",
+          "Support QoS for voice traffic",
+          "Allow for disaster recovery sites"
+        ],
+        "sample_allocation": {
+          "regional_summary": {
+            "north_america": "10.1.0.0/12",
+            "europe": "10.16.0.0/12", 
+            "asia_pacific": "10.32.0.0/12",
+            "infrastructure": "10.240.0.0/12"
+          },
+          "service_networks": {
+            "voice": "10.200.0.0/16",
+            "guest": "10.201.0.0/16",
+            "iot": "10.202.0.0/16",
+            "management": "10.203.0.0/16"
+          }
+        },
+        "evaluation_criteria": [
+          "Address efficiency",
+          "Scalability",
+          "Security segmentation", 
+          "Routing optimization",
+          "Operational complexity"
+        ]
+      },
+      {
+        "id": "exp_002",
+        "title": "ISP Network Planning",
+        "difficulty": "Expert",
+        "description": "Design addressing plan for an Internet Service Provider",
+        "scenario": {
+          "isp_type": "Regional ISP",
+          "service_area": "Metropolitan area",
+          "customer_types": [
+            {"type": "Residential", "count": 10000, "addresses_per_customer": 1},
+            {"type": "Small Business", "count": 500, "addresses_per_customer": 8},
+            {"type": "Medium Business", "count": 100, "addresses_per_customer": 32},
+            {"type": "Large Enterprise", "count": 20, "addresses_per_customer": 256}
+          ],
+          "infrastructure_needs": [
+            "Point-to-point links",
+            "Server infrastructure", 
+            "Network management",
+            "Future expansion"
+          ]
+        },
+        "allocation_received": "203.0.113.0/24",
+        "challenges": [
+          "Maximize address utilization",
+          "Support different customer tiers",
+          "Plan for growth",
+          "Minimize routing complexity",
+          "Provide redundancy"
+        ],
+        "advanced_concepts": [
+          "CIDR aggregation",
+          "Route summarization",
+          "NAT considerations", 
+          "IPv6 transition planning"
+        ]
+      }
+    ],
+    "practical_scenarios": [
+      {
+        "id": "prac_001",
+        "title": "Home Office Network",
+        "difficulty": "Beginner",
+        "description": "Set up a simple home office network",
+        "devices": [
+          {"type": "Router/Gateway", "ip": "192.168.1.1"},
+          {"type": "Laptop", "ip": "DHCP"},
+          {"type": "Desktop", "ip": "DHCP"},
+          {"type": "Printer", "ip": "192.168.1.10"},
+          {"type": "NAS", "ip": "192.168.1.11"},
+          {"type": "Smart TV", "ip": "DHCP"},
+          {"type": "Smartphones", "count": 3, "ip": "DHCP"}
+        ],
+        "network": "192.168.1.0/24",
+        "dhcp_pool": "192.168.1.100-192.168.1.200",
+        "questions": [
+          {
+            "question": "How many DHCP addresses are available?",
+            "answer": "101",
+            "explanation": "192.168.1.100 to 192.168.1.200 = 101 addresses"
+          },
+          {
+            "question": "Why are static IPs used for printer and NAS?",
+            "answer": "For consistent access and easier management",
+            "explanation": "Servers and shared devices benefit from static IPs"
+          }
+        ]
+      },
+      {
+        "id": "prac_002",
+        "title": "Small Business Network Upgrade", 
+        "difficulty": "Intermediate",
+        "description": "Upgrade a growing business network",
+        "current_setup": {
+          "network": "192.168.0.0/24",
+          "users": 25,
+          "servers": 3,
+          "printers": 2,
+          "issues": [
+            "Running out of IP addresses",
+            "No network segmentation",
+            "Guest devices on main network"
+          ]
+        },
+        "proposed_solution": {
+          "main_network": "10.1.0.0/16",
+          "vlans": [
+            {"id": 10, "name": "Users", "subnet": "10.1.10.0/24"},
+            {"id": 20, "name": "Servers", "subnet": "10.1.20.0/28"},
+            {"id": 30, "name": "Printers", "subnet": "10.1.30.0/28"},
+            {"id": 100, "name": "Guest", "subnet": "10.1.100.0/24"}
+          ]
+        },
+        "migration_plan": [
+          "Plan new IP addressing scheme",
+          "Configure VLANs on switches",
+          "Update DHCP scopes",
+          "Migrate devices gradually",
+          "Update firewall rules",
+          "Test connectivity",
+          "Document new configuration"
+        ]
+      }
+    ],
+    "troubleshooting_exercises": [
+      {
+        "id": "trouble_001",
+        "title": "IP Conflict Resolution",
+        "difficulty": "Intermediate",
+        "description": "Resolve IP address conflicts in a network",
+        "scenario": {
+          "network": "192.168.1.0/24", 
+          "dhcp_pool": "192.168.1.100-192.168.1.200",
+          "static_assignments": [
+            {"device": "Server", "ip": "192.168.1.10"},
+            {"device": "Printer", "ip": "192.168.1.11"},
+            {"device": "AP", "ip": "192.168.1.12"}
+          ],
+          "problem": "Users reporting intermittent connectivity issues",
+          "symptoms": [
+            "Duplicate IP address warnings",
+            "Some devices can't access network",
+            "Ping responses from wrong devices"
+          ]
+        },
+        "investigation_steps": [
+          "Check DHCP logs for conflicts",
+          "Scan network for duplicate IPs",
+          "Review static IP assignments",
+          "Check for rogue DHCP servers",
+          "Verify DHCP exclusions"
+        ],
+        "solution": {
+          "root_cause": "Static IPs not excluded from DHCP pool",
+          "fix": [
+            "Exclude static IP range from DHCP (192.168.1.1-192.168.1.50)",
+            "Clear ARP tables on affected devices",
+            "Renew DHCP leases on client devices",
+            "Document all static assignments"
+          ]
+        }
+      },
+      {
+        "id": "trouble_002",
+        "title": "Subnet Communication Issues",
+        "difficulty": "Advanced",
+        "description": "Diagnose inter-subnet connectivity problems",
+        "network_topology": {
+          "core_router": "10.0.0.1",
+          "subnets": [
+            {"vlan": 10, "subnet": "10.0.10.0/24", "gateway": "10.0.10.1"},
+            {"vlan": 20, "subnet": "10.0.20.0/24", "gateway": "10.0.20.1"},
+            {"vlan": 30, "subnet": "10.0.30.0/24", "gateway": "10.0.30.1"}
+          ]
+        },
+        "problem": "VLAN 10 cannot reach VLAN 20, but both can reach VLAN 30",
+        "diagnostic_questions": [
+          {
+            "question": "What could cause selective inter-VLAN connectivity?",
+            "answers": [
+              "Firewall/ACL rules blocking specific VLANs",
+              "Routing table missing entries",
+              "VLAN misconfiguration",
+              "Physical connectivity issues"
+            ]
+          },
+          {
+            "question": "What troubleshooting steps would you take?",
+            "answers": [
+              "Check routing table on core router",
+              "Verify VLAN configuration",
+              "Test with ping and traceroute", 
+              "Review firewall rules",
+              "Check switch port configurations"
+            ]
+          }
+        ]
+      }
+    ],
+    "assessment_rubric": {
+      "beginner_level": {
+        "passing_score": "70%",
+        "skills_assessed": [
+          "Basic subnet mask conversion",
+          "CIDR notation understanding",
+          "Network vs host identification",
+          "IP address classification"
+        ]
+      },
+      "intermediate_level": {
+        "passing_score": "75%",
+        "skills_assessed": [
+          "Subnet division calculations",
+          "VLSM design principles",
+          "Route summarization",
+          "Network planning"
+        ]
+      },
+      "advanced_level": {
+        "passing_score": "80%",
+        "skills_assessed": [
+          "Complex VLSM scenarios",
+          "Network troubleshooting",
+          "IPv6 subnetting",
+          "Enterprise design"
+        ]
+      },
+      "expert_level": {
+        "passing_score": "85%",
+        "skills_assessed": [
+          "Large-scale network design",
+          "Address optimization",
+          "Multi-site connectivity",
+          "Strategic planning"
+        ]
+      }
+    },
+    "reference_materials": {
+      "subnet_mask_reference": {
+        "/8": {"mask": "255.0.0.0", "hosts": 16777214},
+        "/16": {"mask": "255.255.0.0", "hosts": 65534},
+        "/24": {"mask": "255.255.255.0", "hosts": 254},
+        "/25": {"mask": "255.255.255.128", "hosts": 126},
+        "/26": {"mask": "255.255.255.192", "hosts": 62},
+        "/27": {"mask": "255.255.255.224", "hosts": 30},
+        "/28": {"mask": "255.255.255.240", "hosts": 14},
+        "/29": {"mask": "255.255.255.248", "hosts": 6},
+        "/30": {"mask": "255.255.255.252", "hosts": 2}
+      },
+      "private_ip_ranges": {
+        "class_a": "10.0.0.0/8",
+        "class_b": "172.16.0.0/12", 
+        "class_c": "192.168.0.0/16"
+      },
+      "special_addresses": {
+        "loopback": "127.0.0.0/8",
+        "link_local": "169.254.0.0/16",
+        "multicast": "224.0.0.0/4",
+        "broadcast": "255.255.255.255/32"
+      },
+      "formulas": {
+        "subnets": "2^(borrowed bits)",
+        "hosts": "2^(host bits) - 2", 
+        "subnet_increment": "256 - subnet mask value",
+        "network_address": "IP AND subnet_mask",
+        "broadcast_address": "network_address OR wildcard_mask"
+      }
+    },
+    "tips_and_tricks": [
+      {
+        "topic": "Quick CIDR Calculation",
+        "tip": "Remember common CIDR values: /24=254 hosts, /25=126, /26=62, /27=30, /28=14, /29=6, /30=2"
+      },
+      {
+        "topic": "Binary Shortcuts", 
+        "tip": "Powers of 2: 2^1=2, 2^2=4, 2^3=8, 2^4=16, 2^5=32, 2^6=64, 2^7=128, 2^8=256"
+      },
+      {
+        "topic": "VLSM Strategy",
+        "tip": "Always start with the largest subnet requirement first to avoid address space fragmentation"
+      },
+      {
+        "topic": "Subnet Verification",
+        "tip": "Check your work: network address should have all host bits = 0, broadcast should have all host bits = 1"
+      },
+      {
+        "topic": "Common Mistakes",
+        "tip": "Don't forget to subtract 2 from total addresses (network and broadcast addresses are not usable for hosts)"
+      }
+    ],
+    "practice_tools": {
+      "online_calculators": [
+        "IP Subnet Calculator",
+        "VLSM Calculator", 
+        "Binary Converter",
+        "Network Scanner"
+      ],
+      "mobile_apps": [
+        "Subnet Calculator",
+        "Network Tools",
+        "IP Tools"
+      ],
+      "command_line_tools": [
+        "ipcalc",
+        "sipcalc", 
+        "netmask",
+        "ping",
+        "traceroute"
+      ]
+    },
+    "certification_alignment": {
+      "cisco_ccna": [
+        "Configure and verify IPv4 addressing and subnetting",
+        "Configure and verify IPv6 addressing and prefix",
+        "Compare and contrast IPv6 address types"
+      ],
+      "comptia_network": [
+        "Given a scenario, configure a subnet and use appropriate IP addressing schemes",
+        "Explain the concepts and characteristics of routing and switching"
+      ],
+      "juniper_jncia": [
+        "Identify the concepts, benefits, and functionality of various fundamental elements",
+        "Configure and monitor network interfaces"
+      ]
+    }
+  }
+}
