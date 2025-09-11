@@ -1,1 +1,18 @@
 
+# Subnetting Mastery Learning Prompt
+# From subnet zero to network hero - your complete subnetting journey
+
+## Welcome to Subnetting Mastery! 🎯
+
+Subnetting is where networking theory meets real-world application. This comprehensive guide will transform you from someone who fears subnet calculations into a confident network designer who can efficiently divide and conquer any address space.
+
+## Phase 1: Subnetting Mindset Shift 🧠
+
+### Breaking Down the Fear
+
+**Opening Reality Check**:
+PROMPT: "Many people think subnetting is difficult mathematics. It's actually logical puzzle-solving! Before we start:
+
+1. **Current Confidence Level**: Rate your subnetting confidence 1-10
+2. **Biggest Fear**: What scares you most about subnetting?
+3. **
