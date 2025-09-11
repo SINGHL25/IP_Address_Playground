@@ -1,1 +1,326 @@
 
+# DHCP Pool Configuration Examples
+# This file contains various DHCP pool configurations for different network scenarios
+
+# Main Office Configuration
+main_office:
+  name: "Main Office Network"
+  description: "Primary corporate network for headquarters"
+  network_address: "192.168.1.0"
+  subnet_mask: "255.255.255.0"
+  cidr: 24
+  pool_start: "192.168.1.100"
+  pool_end: "192.168.1.200"
+  gateway: "192.168.1.1"
+  dns_servers:
+    primary: "8.8.8.8"
+    secondary: "8.8.4.4"
+    tertiary: "1.1.1.1"
+  domain_name: "company.local"
+  lease_time: "24 hours"
+  renewal_time: "12 hours"
+  rebinding_time: "21 hours"
+  reservations:
+    - mac_address: "00:11:22:33:44:55"
+      ip_address: "192.168.1.10"
+      hostname: "mail-server"
+      description: "Email server"
+    - mac_address: "00:11:22:33:44:56"
+      ip_address: "192.168.1.11"
+      hostname: "web-server"
+      description: "Web server"
+    - mac_address: "00:11:22:33:44:57"
+      ip_address: "192.168.1.12"
+      hostname: "file-server"
+      description: "File server"
+
+# Branch Office Configuration
+branch_office_1:
+  name: "Branch Office 1"
+  description: "Remote branch office network"
+  network_address: "10.1.0.0"
+  subnet_mask: "255.255.0.0"
+  cidr: 16
+  pool_start: "10.1.100.1"
+  pool_end: "10.1.100.254"
+  gateway: "10.1.0.1"
+  dns_servers:
+    primary: "10.1.0.2"
+    secondary: "8.8.8.8"
+  domain_name: "branch1.company.local"
+  lease_time: "8 hours"
+  renewal_time: "4 hours"
+  rebinding_time: "7 hours"
+  options:
+    ntp_servers: ["pool.ntp.org", "time.nist.gov"]
+    wins_servers: ["10.1.0.3"]
+  reservations:
+    - mac_address: "00:22:33:44:55:66"
+      ip_address: "10.1.0.10"
+      hostname: "branch1-printer"
+      description: "Branch office printer"
+
+# Guest Network Configuration
+guest_network:
+  name: "Guest WiFi Network"
+  description: "Isolated network for guest access"
+  network_address: "172.16.100.0"
+  subnet_mask: "255.255.255.0"
+  cidr: 24
+  pool_start: "172.16.100.50"
+  pool_end: "172.16.100.200"
+  gateway: "172.16.100.1"
+  dns_servers:
+    primary: "8.8.8.8"
+    secondary: "1.1.1.1"
+  domain_name: "guest.local"
+  lease_time: "2 hours"
+  renewal_time: "1 hour"
+  rebinding_time: "1.5 hours"
+  security:
+    isolation: true
+    internet_only: true
+    bandwidth_limit: "10 Mbps"
+
+# IoT Device Network
+iot_network:
+  name: "IoT Device Network"
+  description: "Network for Internet of Things devices"
+  network_address: "10.10.0.0"
+  subnet_mask: "255.255.0.0"
+  cidr: 16
+  pool_start: "10.10.1.1"
+  pool_end: "10.10.50.254"
+  gateway: "10.10.0.1"
+  dns_servers:
+    primary: "10.10.0.2"
+    secondary: "8.8.8.8"
+  domain_name: "iot.company.local"
+  lease_time: "7 days"
+  renewal_time: "3.5 days"
+  rebinding_time: "6 days"
+  device_classes:
+    - name: "Smart Thermostats"
+      vendor_id: "thermostat"
+      lease_time: "30 days"
+    - name: "Security Cameras"
+      vendor_id: "camera"
+      lease_time: "7 days"
+    - name: "Smart Lights"
+      vendor_id: "lighting"
+      lease_time: "14 days"
+  reservations:
+    - mac_address: "aa:bb:cc:dd:ee:01"
+      ip_address: "10.10.0.10"
+      hostname: "main-thermostat"
+      description: "Main building thermostat"
+    - mac_address: "aa:bb:cc:dd:ee:02"
+      ip_address: "10.10.0.11"
+      hostname: "lobby-camera"
+      description: "Lobby security camera"
+
+# Voice Network (VoIP)
+voice_network:
+  name: "Voice Network"
+  description: "Dedicated network for VoIP phones"
+  network_address: "192.168.10.0"
+  subnet_mask: "255.255.255.0"
+  cidr: 24
+  pool_start: "192.168.10.100"
+  pool_end: "192.168.10.200"
+  gateway: "192.168.10.1"
+  dns_servers:
+    primary: "192.168.10.2"
+    secondary: "8.8.8.8"
+  domain_name: "voice.company.local"
+  lease_time: "24 hours"
+  renewal_time: "12 hours"
+  rebinding_time: "21 hours"
+  voice_options:
+    tftp_server: "192.168.10.2"
+    sip_server: "192.168.10.3"
+    codec_preference: "G.711"
+  qos:
+    priority: "high"
+    dscp_marking: "EF"
+
+# Small Office Configuration
+small_office:
+  name: "Small Office"
+  description: "Configuration for small office (10-20 users)"
+  network_address: "192.168.0.0"
+  subnet_mask: "255.255.255.0"
+  cidr: 24
+  pool_start: "192.168.0.50"
+  pool_end: "192.168.0.100"
+  gateway: "192.168.0.1"
+  dns_servers:
+    primary: "192.168.0.1"
+    secondary: "8.8.8.8"
+  domain_name: "smalloffice.local"
+  lease_time: "12 hours"
+  renewal_time: "6 hours"
+  rebinding_time: "10 hours"
+  reservations:
+    - mac_address: "11:22:33:44:55:66"
+      ip_address: "192.168.0.10"
+      hostname: "office-printer"
+      description: "Multi-function printer"
+    - mac_address: "11:22:33:44:55:67"
+      ip_address: "192.168.0.11"
+      hostname: "office-nas"
+      description: "Network attached storage"
+
+# Data Center Network
+data_center:
+  name: "Data Center Network"
+  description: "High-density server network"
+  network_address: "10.0.0.0"
+  subnet_mask: "255.255.0.0"
+  cidr: 16
+  pool_start: "10.0.100.1"
+  pool_end: "10.0.200.254"
+  gateway: "10.0.0.1"
+  dns_servers:
+    primary: "10.0.0.2"
+    secondary: "10.0.0.3"
+  domain_name: "datacenter.company.local"
+  lease_time: "7 days"
+  renewal_time: "3.5 days"
+  rebinding_time: "6 days"
+  server_classes:
+    - name: "Web Servers"
+      pool_range: "10.0.150.1-10.0.150.100"
+      lease_time: "30 days"
+    - name: "Database Servers"
+      pool_range: "10.0.160.1-10.0.160.50"
+      lease_time: "30 days"
+    - name: "Application Servers"
+      pool_range: "10.0.170.1-10.0.170.100"
+      lease_time: "30 days"
+
+# Campus Network Configuration
+campus_network:
+  name: "University Campus"
+  description: "Large campus network with multiple buildings"
+  subnets:
+    - name: "Administration Building"
+      network_address: "172.20.10.0"
+      subnet_mask: "255.255.255.0"
+      cidr: 24
+      pool_start: "172.20.10.50"
+      pool_end: "172.20.10.200"
+      vlan_id: 10
+    - name: "Library"
+      network_address: "172.20.20.0"
+      subnet_mask: "255.255.255.0"
+      cidr: 24
+      pool_start: "172.20.20.50"
+      pool_end: "172.20.20.200"
+      vlan_id: 20
+    - name: "Student Dormitory A"
+      network_address: "172.20.100.0"
+      subnet_mask: "255.255.254.0"
+      cidr: 23
+      pool_start: "172.20.100.100"
+      pool_end: "172.20.101.200"
+      vlan_id: 100
+    - name: "Student Dormitory B"
+      network_address: "172.20.102.0"
+      subnet_mask: "255.255.254.0"
+      cidr: 23
+      pool_start: "172.20.102.100"
+      pool_end: "172.20.103.200"
+      vlan_id: 102
+  global_settings:
+    gateway: "172.20.0.1"
+    dns_servers:
+      primary: "172.20.0.2"
+      secondary: "8.8.8.8"
+    domain_name: "university.edu"
+    lease_time: "4 hours"
+    renewal_time: "2 hours"
+    rebinding_time: "3.5 hours"
+
+# Testing and Development Environment
+test_environment:
+  name: "Test Lab Network"
+  description: "Network for testing and development"
+  network_address: "192.168.99.0"
+  subnet_mask: "255.255.255.0"
+  cidr: 24
+  pool_start: "192.168.99.100"
+  pool_end: "192.168.99.200"
+  gateway: "192.168.99.1"
+  dns_servers:
+    primary: "192.168.99.2"
+    secondary: "8.8.8.8"
+  domain_name: "testlab.local"
+  lease_time: "1 hour"
+  renewal_time: "30 minutes"
+  rebinding_time: "50 minutes"
+  features:
+    rapid_commit: true
+    conflict_detection: true
+    ping_check: true
+    dynamic_dns: true
+  reservations:
+    - mac_address: "99:88:77:66:55:44"
+      ip_address: "192.168.99.10"
+      hostname: "test-server-1"
+      description: "Primary test server"
+    - mac_address: "99:88:77:66:55:45"
+      ip_address: "192.168.99.11"
+      hostname: "test-server-2"
+      description: "Secondary test server"
+
+# High Availability Configuration
+ha_configuration:
+  primary_server:
+    name: "Primary DHCP Server"
+    server_id: "dhcp1.company.local"
+    ip_address: "192.168.1.10"
+    role: "primary"
+    failover_peer: "dhcp2.company.local"
+  
+  secondary_server:
+    name: "Secondary DHCP Server"
+    server_id: "dhcp2.company.local"
+    ip_address: "192.168.1.11"
+    role: "secondary"
+    failover_peer: "dhcp1.company.local"
+  
+  failover_settings:
+    mode: "load-balance"
+    split_percentage: 50
+    mclt: "3600"  # Maximum Client Lead Time
+    safe_period: "7200"
+    auto_partner_down: "3600"
+    
+  shared_pools:
+    - name: "Main Office Pool"
+      network: "192.168.1.0/24"
+      pool_start: "192.168.1.100"
+      pool_end: "192.168.1.200"
+      primary_allocation: "192.168.1.100-192.168.1.150"
+      secondary_allocation: "192.168.1.151-192.168.1.200"
+
+# Configuration Metadata
+metadata:
+  version: "1.0"
+  created_by: "Network Administrator"
+  created_date: "2024-01-01"
+  last_modified: "2024-01-15"
+  description: "Example DHCP pool configurations for various network scenarios"
+  usage_notes:
+    - "Adjust IP ranges based on your network requirements"
+    - "Ensure DNS servers are reachable from client networks"
+    - "Consider security implications for guest networks"
+    - "Test configurations in a lab environment first"
+    - "Document all reservations for future reference"
+  best_practices:
+    - "Use consistent naming conventions"
+    - "Keep lease times appropriate for device types"
+    - "Monitor pool utilization regularly"
+    - "Implement proper backup and recovery procedures"
+    - "Use VLANs to segment different network types"
