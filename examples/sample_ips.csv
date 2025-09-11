@@ -1,1 +1,81 @@
-
+ip_address,hostname,device_type,location,department,mac_address,status,last_seen,notes
+192.168.1.10,mail-server,Server,Data Center,IT,00:11:22:33:44:55,Active,2024-01-15 09:30:00,Primary email server
+192.168.1.11,web-server-1,Server,Data Center,IT,00:11:22:33:44:56,Active,2024-01-15 09:25:00,Web server cluster node 1
+192.168.1.12,web-server-2,Server,Data Center,IT,00:11:22:33:44:57,Active,2024-01-15 09:25:00,Web server cluster node 2
+192.168.1.13,db-server,Server,Data Center,IT,00:11:22:33:44:58,Active,2024-01-15 09:20:00,Primary database server
+192.168.1.14,backup-server,Server,Data Center,IT,00:11:22:33:44:59,Active,2024-01-15 08:45:00,Backup and storage server
+192.168.1.15,dns-server,Server,Data Center,IT,00:11:22:33:44:5A,Active,2024-01-15 09:35:00,Internal DNS server
+192.168.1.20,printer-main,Printer,Office Floor 1,Admin,00:AA:BB:CC:DD:01,Active,2024-01-15 08:15:00,Main office printer
+192.168.1.21,printer-color,Printer,Office Floor 2,Marketing,00:AA:BB:CC:DD:02,Active,2024-01-15 07:45:00,Color laser printer
+192.168.1.50,ceo-laptop,Laptop,Executive Office,Management,11:22:33:44:55:66,Active,2024-01-15 09:15:00,CEO's laptop
+192.168.1.51,cfo-desktop,Desktop,Finance Office,Finance,11:22:33:44:55:67,Active,2024-01-15 08:30:00,CFO's workstation
+192.168.1.60,eng-workstation-1,Desktop,Engineering Lab,Engineering,22:33:44:55:66:77,Active,2024-01-15 09:00:00,Engineering workstation
+192.168.1.61,eng-workstation-2,Desktop,Engineering Lab,Engineering,22:33:44:55:66:78,Active,2024-01-15 09:05:00,CAD workstation
+192.168.1.62,eng-laptop-1,Laptop,Engineering Lab,Engineering,22:33:44:55:66:79,Active,2024-01-15 08:50:00,Engineering laptop
+192.168.1.70,sales-laptop-1,Laptop,Sales Floor,Sales,33:44:55:66:77:88,Active,2024-01-15 09:10:00,Sales representative laptop
+192.168.1.71,sales-laptop-2,Laptop,Sales Floor,Sales,33:44:55:66:77:89,Active,2024-01-15 08:20:00,Sales manager laptop
+192.168.1.72,sales-tablet-1,Tablet,Sales Floor,Sales,33:44:55:66:77:8A,Active,2024-01-15 07:30:00,Sales demo tablet
+192.168.1.80,hr-desktop,Desktop,HR Office,Human Resources,44:55:66:77:88:99,Active,2024-01-15 08:45:00,HR workstation
+192.168.1.81,hr-laptop,Laptop,HR Office,Human Resources,44:55:66:77:88:9A,Active,2024-01-15 09:20:00,HR manager laptop
+192.168.1.90,guest-device-1,Laptop,Conference Room A,Guest,55:66:77:88:99:AA,Active,2024-01-15 10:00:00,Guest device in conf room
+192.168.1.91,guest-device-2,Smartphone,Lobby,Guest,55:66:77:88:99:AB,Active,2024-01-15 09:45:00,Guest mobile device
+10.0.1.10,branch-server,Server,Branch Office 1,IT,66:77:88:99:AA:BB,Active,2024-01-15 09:00:00,Branch office server
+10.0.1.20,branch-printer,Printer,Branch Office 1,Admin,66:77:88:99:AA:BC,Active,2024-01-15 08:00:00,Branch office printer
+10.0.1.30,branch-mgr-laptop,Laptop,Branch Office 1,Management,66:77:88:99:AA:BD,Active,2024-01-15 09:30:00,Branch manager laptop
+10.0.1.40,branch-clerk-pc,Desktop,Branch Office 1,Sales,66:77:88:99:AA:BE,Active,2024-01-15 08:45:00,Branch clerk workstation
+10.0.2.10,remote-server,Server,Branch Office 2,IT,77:88:99:AA:BB:CC,Active,2024-01-15 08:30:00,Remote office server
+10.0.2.20,remote-laptop-1,Laptop,Branch Office 2,Sales,77:88:99:AA:BB:CD,Active,2024-01-15 09:15:00,Remote worker laptop
+172.16.100.50,guest-wifi-1,Laptop,Guest Network,Guest,88:99:AA:BB:CC:DD,Active,2024-01-15 10:30:00,Guest WiFi device
+172.16.100.51,guest-wifi-2,Smartphone,Guest Network,Guest,88:99:AA:BB:CC:DE,Active,2024-01-15 10:15:00,Guest mobile device
+172.16.100.52,guest-wifi-3,Tablet,Guest Network,Guest,88:99:AA:BB:CC:DF,Active,2024-01-15 09:50:00,Guest tablet
+192.168.10.100,voip-phone-1,VoIP Phone,Office Floor 1,Sales,99:AA:BB:CC:DD:EE,Active,2024-01-15 09:00:00,Sales desk phone
+192.168.10.101,voip-phone-2,VoIP Phone,Office Floor 1,Marketing,99:AA:BB:CC:DD:EF,Active,2024-01-15 09:00:00,Marketing desk phone
+192.168.10.102,voip-phone-3,VoIP Phone,Conference Room A,Admin,99:AA:BB:CC:DD:F0,Active,2024-01-15 09:00:00,Conference room phone
+192.168.10.103,voip-phone-4,VoIP Phone,Executive Office,Management,99:AA:BB:CC:DD:F1,Active,2024-01-15 09:00:00,Executive desk phone
+10.10.1.10,iot-thermostat-1,IoT Device,Office Floor 1,Facilities,AA:BB:CC:DD:EE:01,Active,2024-01-15 06:00:00,Smart thermostat main floor
+10.10.1.11,iot-thermostat-2,IoT Device,Office Floor 2,Facilities,AA:BB:CC:DD:EE:02,Active,2024-01-15 06:00:00,Smart thermostat upper floor
+10.10.1.20,iot-camera-1,IoT Device,Main Entrance,Security,AA:BB:CC:DD:EE:03,Active,2024-01-15 00:00:00,Security camera main entrance
+10.10.1.21,iot-camera-2,IoT Device,Parking Lot,Security,AA:BB:CC:DD:EE:04,Active,2024-01-15 00:00:00,Security camera parking
+10.10.1.22,iot-camera-3,IoT Device,Server Room,Security,AA:BB:CC:DD:EE:05,Active,2024-01-15 00:00:00,Security camera server room
+10.10.1.30,iot-lights-1,IoT Device,Office Floor 1,Facilities,AA:BB:CC:DD:EE:06,Active,2024-01-15 07:00:00,Smart lighting control floor 1
+10.10.1.31,iot-lights-2,IoT Device,Office Floor 2,Facilities,AA:BB:CC:DD:EE:07,Active,2024-01-15 07:00:00,Smart lighting control floor 2
+10.10.1.40,iot-door-1,IoT Device,Main Entrance,Security,AA:BB:CC:DD:EE:08,Active,2024-01-15 06:30:00,Smart door lock main entrance
+10.10.1.41,iot-door-2,IoT Device,Server Room,Security,AA:BB:CC:DD:EE:09,Active,2024-01-15 06:30:00,Smart door lock server room
+8.8.8.8,google-dns,DNS Server,Internet,External,N/A,Active,2024-01-15 10:00:00,Google public DNS
+1.1.1.1,cloudflare-dns,DNS Server,Internet,External,N/A,Active,2024-01-15 10:00:00,Cloudflare public DNS
+208.67.222.222,opendns,DNS Server,Internet,External,N/A,Active,2024-01-15 10:00:00,OpenDNS public resolver
+192.168.99.10,test-server-1,Server,Test Lab,IT,BB:CC:DD:EE:FF:01,Active,2024-01-15 09:30:00,Primary test server
+192.168.99.11,test-server-2,Server,Test Lab,IT,BB:CC:DD:EE:FF:02,Active,2024-01-15 09:30:00,Secondary test server
+192.168.99.20,test-client-1,Desktop,Test Lab,IT,BB:CC:DD:EE:FF:03,Active,2024-01-15 09:00:00,Test client machine
+192.168.99.21,test-client-2,Laptop,Test Lab,IT,BB:CC:DD:EE:FF:04,Active,2024-01-15 09:00:00,Test laptop
+127.0.0.1,localhost,Loopback,Local,System,N/A,Active,2024-01-15 10:00:00,Local loopback interface
+169.254.1.100,apipa-device,Unknown,Network,Unknown,CC:DD:EE:FF:00:01,Inactive,2024-01-14 15:30:00,APIPA address (DHCP failure)
+224.0.0.1,multicast-all,Multicast,Network,System,N/A,Active,2024-01-15 10:00:00,All hosts multicast address
+192.168.1.100,dhcp-client-1,Laptop,Office Floor 1,Finance,DD:EE:FF:00:11:22,Active,2024-01-15 09:45:00,DHCP assigned laptop
+192.168.1.101,dhcp-client-2,Desktop,Office Floor 1,Marketing,DD:EE:FF:00:11:23,Active,2024-01-15 09:40:00,DHCP assigned workstation
+192.168.1.102,dhcp-client-3,Smartphone,Office Floor 1,Sales,DD:EE:FF:00:11:24,Active,2024-01-15 10:20:00,DHCP assigned mobile device
+192.168.1.103,dhcp-client-4,Tablet,Office Floor 2,Engineering,DD:EE:FF:00:11:25,Active,2024-01-15 09:55:00,DHCP assigned tablet
+192.168.1.104,dhcp-client-5,Laptop,Conference Room B,Guest,DD:EE:FF:00:11:26,Active,2024-01-15 10:30:00,Guest laptop via DHCP
+203.0.113.10,public-server-1,Server,Cloud,IT,EE:FF:00:11:22:33,Active,2024-01-15 09:00:00,Public cloud server instance
+203.0.113.11,public-server-2,Server,Cloud,IT,EE:FF:00:11:22:34,Active,2024-01-15 09:00:00,Load balancer instance
+198.51.100.50,web-frontend,Server,CDN,IT,EE:FF:00:11:22:35,Active,2024-01-15 09:30:00,CDN edge server
+198.51.100.51,api-gateway,Server,CDN,IT,EE:FF:00:11:22:36,Active,2024-01-15 09:30:00,API gateway server
+192.0.2.100,documentation-example,Virtual,Documentation,System,N/A,N/A,N/A,RFC 5737 documentation address
+192.0.2.101,test-example-1,Virtual,Documentation,System,N/A,N/A,N/A,Test documentation address
+192.0.2.102,test-example-2,Virtual,Documentation,System,N/A,N/A,N/A,Example IP for testing
+172.31.255.254,aws-private,Server,AWS VPC,Cloud,FF:00:11:22:33:44,Active,2024-01-15 08:00:00,AWS EC2 private IP
+10.0.255.254,azure-private,Server,Azure VNet,Cloud,FF:00:11:22:33:45,Active,2024-01-15 08:00:00,Azure VM private IP
+192.168.2.50,legacy-server,Server,Legacy Network,IT,00:50:56:00:00:01,Inactive,2024-01-10 16:00:00,Old server pending migration
+192.168.2.51,legacy-workstation,Desktop,Legacy Network,Finance,00:50:56:00:00:02,Inactive,2024-01-12 17:30:00,Legacy system
+192.168.3.10,dmz-web-server,Server,DMZ,IT,00:0C:29:00:00:01,Active,2024-01-15 09:00:00,DMZ web server
+192.168.3.11,dmz-mail-relay,Server,DMZ,IT,00:0C:29:00:00:02,Active,2024-01-15 09:00:00,Mail relay in DMZ
+192.168.3.12,dmz-ftp-server,Server,DMZ,IT,00:0C:29:00:00:03,Active,2024-01-15 08:30:00,FTP server in DMZ
+255.255.255.255,broadcast,Broadcast,Network,System,N/A,N/A,N/A,Limited broadcast address
+0.0.0.0,default-route,Route,Network,System,N/A,N/A,N/A,Default route address
+192.168.1.200,dhcp-pool-end,Pool,DHCP,System,N/A,N/A,N/A,End of DHCP pool range
+192.168.1.254,gateway,Gateway,Network,Infrastructure,00:1A:2B:3C:4D:5E,Active,2024-01-15 10:00:00,Main network gateway
+192.168.1.253,secondary-gateway,Gateway,Network,Infrastructure,00:1A:2B:3C:4D:5F,Standby,2024-01-15 10:00:00,Backup gateway (HSRP/VRRP)
+10.0.0.1,branch-gateway,Gateway,Branch Office 1,Infrastructure,00:1B:2C:3D:4E:5F,Active,2024-01-15 09:30:00,Branch office gateway
+172.16.0.1,guest-gateway,Gateway,Guest Network,Infrastructure,00:1C:2D:3E:4F:50,Active,2024-01-15 10:00:00,Guest network gateway
+192.168.10.1,voice-gateway,Gateway,Voice Network,Infrastructure,00:1D:2E:3F:40:51,Active,2024-01-15 09:00:00,VoIP gateway
+10.10.0.1,iot-gateway,Gateway,IoT Network,Infrastructure,00:1E:2F:40:51:52,Active,2024-01-15 08:00:00,IoT network gateway
