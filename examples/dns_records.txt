@@ -1,1 +1,214 @@
+# DNS Records Examples
+# This file contains various DNS record types and examples for testing and learning
+# Format: Domain Name | Record Type | Value | TTL | Description
 
+# === A RECORDS (IPv4 Address Records) ===
+# Basic A records pointing to IPv4 addresses
+
+example.com | A | 93.184.216.34 | 3600 | Main website
+www.example.com | A | 93.184.216.34 | 3600 | WWW subdomain
+mail.example.com | A | 192.168.1.10 | 300 | Mail server
+ftp.example.com | A | 192.168.1.11 | 3600 | FTP server
+api.example.com | A | 192.168.1.12 | 300 | API endpoint
+cdn.example.com | A | 151.101.1.140 | 600 | Content delivery network
+cdn.example.com | A | 151.101.65.140 | 600 | CDN secondary
+cdn.example.com | A | 151.101.129.140 | 600 | CDN tertiary
+test.example.com | A | 192.168.99.10 | 60 | Test environment
+dev.example.com | A | 10.0.1.50 | 300 | Development server
+
+# Cloud service examples
+app1.cloudapp.net | A | 20.50.203.50 | 300 | Cloud application
+app2.cloudapp.net | A | 52.179.17.131 | 300 | Load balanced app
+db.internal.com | A | 10.0.2.100 | 3600 | Internal database
+
+# === AAAA RECORDS (IPv6 Address Records) ===
+# IPv6 address records
+
+example.com | AAAA | 2606:2800:220:1:248:1893:25c8:1946 | 3600 | IPv6 main site
+www.example.com | AAAA | 2606:2800:220:1:248:1893:25c8:1946 | 3600 | IPv6 WWW
+mail.example.com | AAAA | 2001:db8::1 | 300 | IPv6 mail server
+api.example.com | AAAA | 2001:db8::2 | 300 | IPv6 API endpoint
+
+# === MX RECORDS (Mail Exchange Records) ===
+# Mail server records with priorities
+
+example.com | MX | 10 mail.example.com | 3600 | Primary mail server
+example.com | MX | 20 mail2.example.com | 3600 | Secondary mail server
+example.com | MX | 30 mail3.example.com | 3600 | Backup mail server
+
+# Different organizations
+company.com | MX | 1 aspmx.l.google.com | 3600 | Google Workspace primary
+company.com | MX | 5 alt1.aspmx.l.google.com | 3600 | Google Workspace alt 1
+company.com | MX | 5 alt2.aspmx.l.google.com | 3600 | Google Workspace alt 2
+company.com | MX | 10 alt3.aspmx.l.google.com | 3600 | Google Workspace alt 3
+company.com | MX | 10 alt4.aspmx.l.google.com | 3600 | Google Workspace alt 4
+
+startup.io | MX | 10 mx1.emailprovider.com | 3600 | Third-party email service
+startup.io | MX | 20 mx2.emailprovider.com | 3600 | Backup email service
+
+# === CNAME RECORDS (Canonical Name Records) ===
+# Alias records pointing to other domain names
+
+www.example.com | CNAME | example.com | 3600 | WWW alias
+ftp.example.com | CNAME | files.example.com | 3600 | FTP alias
+blog.example.com | CNAME | example.wordpress.com | 300 | WordPress blog
+shop.example.com | CNAME | example.myshopify.com | 300 | Shopify store
+docs.example.com | CNAME | example.gitbook.io | 300 | Documentation site
+support.example.com | CNAME | example.zendesk.com | 300 | Support portal
+webmail.example.com | CNAME | mail.example.com | 3600 | Webmail interface
+
+# CDN and cloud service aliases
+static.example.com | CNAME | d111111abcdef8.cloudfront.net | 600 | CloudFront CDN
+images.example.com | CNAME | example.s3.amazonaws.com | 600 | S3 bucket
+video.example.com | CNAME | example.azureedge.net | 600 | Azure CDN
+
+# === NS RECORDS (Name Server Records) ===
+# Authoritative name servers
+
+example.com | NS | ns1.example.com | 86400 | Primary name server
+example.com | NS | ns2.example.com | 86400 | Secondary name server
+example.com | NS | ns3.example.com | 86400 | Tertiary name server
+
+# Subdomain delegation
+subdomain.example.com | NS | ns1.hosting-provider.com | 3600 | Delegated subdomain
+subdomain.example.com | NS | ns2.hosting-provider.com | 3600 | Delegated subdomain
+
+# Different providers
+company.com | NS | ns-1234.awsdns-12.org | 172800 | Route53 NS 1
+company.com | NS | ns-5678.awsdns-34.co.uk | 172800 | Route53 NS 2
+company.com | NS | ns-9012.awsdns-56.com | 172800 | Route53 NS 3
+company.com | NS | ns-3456.awsdns-78.net | 172800 | Route53 NS 4
+
+# === TXT RECORDS (Text Records) ===
+# Various text records for different purposes
+
+# SPF (Sender Policy Framework) records
+example.com | TXT | v=spf1 include:_spf.google.com ~all | 3600 | SPF record for Google
+company.com | TXT | v=spf1 ip4:192.168.1.10 ip4:192.168.1.11 include:mailgun.org ~all | 3600 | SPF with specific IPs
+startup.io | TXT | v=spf1 a mx include:servers.mcsv.net ~all | 3600 | MailChimp SPF
+
+# DKIM (DomainKeys Identified Mail) records
+google._domainkey.example.com | TXT | v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC... | 3600 | DKIM public key
+selector1._domainkey.company.com | TXT | v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCg... | 3600 | DKIM selector 1
+selector2._domainkey.company.com | TXT | v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCg... | 3600 | DKIM selector 2
+
+# DMARC (Domain-based Message Authentication) records
+_dmarc.example.com | TXT | v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com | 3600 | DMARC policy
+_dmarc.company.com | TXT | v=DMARC1; p=reject; rua=mailto:dmarc-reports@company.com; ruf=mailto:dmarc-failures@company.com | 3600 | Strict DMARC
+
+# Domain verification records
+example.com | TXT | google-site-verification=abcdef1234567890 | 300 | Google Search Console
+example.com | TXT | facebook-domain-verification=xyz123abc456 | 300 | Facebook domain verification
+example.com | TXT | MS=ms12345678 | 300 | Microsoft 365 verification
+
+# Other service verifications
+_github-challenge-example.example.com | TXT | 12345abcdef | 300 | GitHub Pages verification
+example.com | TXT | keybase-site-verification=abcdef123456 | 300 | Keybase verification
+example.com | TXT | atlassian-domain-verification=xyz789 | 300 | Atlassian verification
+
+# === SRV RECORDS (Service Records) ===
+# Service location records
+
+_sip._tcp.example.com | SRV | 0 5 5060 sip.example.com | 3600 | SIP service
+_sips._tcp.example.com | SRV | 0 5 5061 sips.example.com | 3600 | Secure SIP service
+_xmpp-server._tcp.example.com | SRV | 5 0 5269 xmpp.example.com | 3600 | XMPP server
+_xmpp-client._tcp.example.com | SRV | 5 0 5222 xmpp.example.com | 3600 | XMPP client
+_jabber._tcp.example.com | SRV | 5 0 5269 xmpp.example.com | 3600 | Jabber service
+_http._tcp.example.com | SRV | 0 5 80 www.example.com | 3600 | HTTP service
+_https._tcp.example.com | SRV | 0 5 443 www.example.com | 3600 | HTTPS service
+
+# Microsoft services
+_sipfederationtls._tcp.company.com | SRV | 100 1 5061 sipfed.online.lync.com | 3600 | Lync federation
+_sip._tls.company.com | SRV | 100 1 443 sipdir.online.lync.com | 3600 | Lync SIP
+
+# === PTR RECORDS (Reverse DNS Records) ===
+# Reverse DNS lookups (IP to domain)
+
+10.1.168.192.in-addr.arpa | PTR | mail.example.com | 3600 | Reverse DNS for 192.168.1.10
+11.1.168.192.in-addr.arpa | PTR | www.example.com | 3600 | Reverse DNS for 192.168.1.11
+12.1.168.192.in-addr.arpa | PTR | api.example.com | 3600 | Reverse DNS for 192.168.1.12
+
+# IPv6 reverse DNS examples
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa | PTR | ipv6.example.com | 3600 | IPv6 reverse
+
+# === SOA RECORDS (Start of Authority) ===
+# Zone authority information
+
+example.com | SOA | ns1.example.com. admin.example.com. 2024011501 10800 3600 604800 86400 | 86400 | Zone authority
+company.com | SOA | ns1.company.com. hostmaster.company.com. 2024011502 7200 3600 1209600 86400 | 86400 | Zone authority
+
+# === CAA RECORDS (Certificate Authority Authorization) ===
+# Certificate authority restrictions
+
+example.com | CAA | 0 issue "letsencrypt.org" | 3600 | Let's Encrypt allowed
+example.com | CAA | 0 issue "digicert.com" | 3600 | DigiCert allowed
+example.com | CAA | 0 iodef "mailto:security@example.com" | 3600 | Security contact
+company.com | CAA | 128 issue "globalsign.com" | 3600 | GlobalSign critical flag
+
+# === SPECIAL USE CASES ===
+
+# Wildcard records
+*.app.example.com | A | 192.168.1.100 | 300 | Wildcard for all app subdomains
+*.api.example.com | CNAME | api.example.com | 300 | API wildcard
+
+# Internationalized domain names (IDN)
+xn--example-9ua.com | A | 93.184.216.34 | 3600 | IDN example (examplé.com)
+
+# Testing and development
+test1.dev.example.com | A | 192.168.99.10 | 60 | Test server 1
+test2.dev.example.com | A | 192.168.99.11 | 60 | Test server 2
+test3.dev.example.com | A | 192.168.99.12 | 60 | Test server 3
+
+# Load balancing examples
+web.example.com | A | 192.168.1.20 | 300 | Web server 1
+web.example.com | A | 192.168.1.21 | 300 | Web server 2
+web.example.com | A | 192.168.1.22 | 300 | Web server 3
+
+# Geographic distribution
+us.example.com | A | 192.168.10.10 | 300 | US server
+eu.example.com | A | 192.168.20.10 | 300 | European server
+asia.example.com | A | 192.168.30.10 | 300 | Asian server
+
+# === COMMON DNS TESTING DOMAINS ===
+# These are commonly used for DNS testing and examples
+
+google.com | A | 142.250.191.14 | 300 | Google main site
+dns.google | A | 8.8.8.8 | 3600 | Google DNS service
+dns.google | A | 8.8.4.4 | 3600 | Google DNS secondary
+one.one.one.one | A | 1.1.1.1 | 300 | Cloudflare DNS
+cloudflare-dns.com | A | 1.1.1.1 | 300 | Cloudflare DNS
+github.com | A | 140.82.114.4 | 60 | GitHub
+stackoverflow.com | A | 151.101.1.69 | 300 | Stack Overflow
+wikipedia.org | A | 198.35.26.96 | 3600 | Wikipedia
+
+# === NOTES AND COMMENTS ===
+# 
+# TTL (Time To Live) Guidelines:
+# - 60-300 seconds: For records that change frequently (testing, load balancing)
+# - 3600 seconds (1 hour): Standard for most records
+# - 86400 seconds (24 hours): For stable records like NS records
+# - 604800 seconds (7 days): For very stable infrastructure records
+#
+# Priority Guidelines for MX records:
+# - Lower numbers = higher priority
+# - Common values: 10, 20, 30 for primary, secondary, tertiary
+# - Google Workspace typically uses: 1, 5, 5, 10, 10
+#
+# SPF Record Mechanisms:
+# - a: Allow sending servers listed in A records
+# - mx: Allow sending servers listed in MX records  
+# - ip4/ip6: Allow specific IP addresses
+# - include: Include SPF record from another domain
+# - ~all: Soft fail for unlisted servers
+# - -all: Hard fail for unlisted servers
+#
+# DMARC Policies:
+# - none: Take no action (monitoring only)
+# - quarantine: Mark suspicious emails
+# - reject: Reject emails that fail authentication
+#
+# SRV Record Format: priority weight port target
+# - Priority: Lower number = higher priority
+# - Weight: Load distribution among same priority
+# - Port: Service port number
+# - Target: Hostname providing the service
